@@ -2,6 +2,8 @@ package fi.haagahelia.inventoryproject;
 
 import fi.haagahelia.inventoryproject.domain.Product;
 import fi.haagahelia.inventoryproject.domain.ProductDAOImpl;
+import fi.haagahelia.inventoryproject.domain.User;
+import fi.haagahelia.inventoryproject.domain.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -17,12 +19,17 @@ public class InventoryprojectApplication {
     }
 
     @Bean
-    public CommandLineRunner demo(ProductDAOImpl productDAO) {
+    public CommandLineRunner demo(ProductDAOImpl productDAO, UserRepository userRepository) {
         return (args) -> {
-          /*  productDAO.save(new Product("Uncle Ben", "Rice", 29));
-            productDAO.save(new Product("Barilla", "Pasta", 39));
-            productDAO.save(new Product("Twix", "Chocolate bar", 19));
-            */
+            User user1 = new User("user","$2a$10$HcRhold2nXktBId7hBk2jOBmMbPFWbe9Ns4o.HQafyE8SVufGbjs2","USER");
+            User user2 = new User("admin","$2a$10$nTzAvxjymw8bVPkSzK07uu5/ShtWZfuHXwsC8P46Tyo9jGIMxq8xK","ADMIN");
+
+            //userRepository.save(user1);
+            //userRepository.save(user2);
+            //productDAO.save(new Product("Uncle Ben", "Rice", 29));
+            //productDAO.save(new Product("Barilla", "Pasta", 39));
+            //productDAO.save(new Product("Twix", "Chocolate bar", 19));
+
         };
     }
 
