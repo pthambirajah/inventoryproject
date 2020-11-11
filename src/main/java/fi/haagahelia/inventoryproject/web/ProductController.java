@@ -16,6 +16,11 @@ public class ProductController {
     @Autowired
     private ProductDAO productDAO;
 
+    @RequestMapping("/")
+    public @ResponseBody String greeting() {
+        return "Welcome to the shop inventory";
+    }
+
     //List all the products
     @RequestMapping(value="/productlist")
     public String productList(Model model) {
