@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Shop Inventory</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Welcome to the shop's inventory</h1>
+
+<a href="/productlist">Show all products</a>
+</br>
+<a sec:authorize="hasAuthority('ADMIN')"  href="/add">Add Product</a>
+<a href="/logout">Logout</a>
+</body>
+</html>

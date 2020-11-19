@@ -3,6 +3,7 @@ package fi.haagahelia.inventoryproject.web;
 import fi.haagahelia.inventoryproject.domain.Product;
 import fi.haagahelia.inventoryproject.domain.ProductDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +19,8 @@ public class ProductController {
     private ProductDAO productDAO;
 
     @RequestMapping("/")
-    public @ResponseBody String greeting() {
-        return "Welcome to the shop inventory";
+    public String home() {
+        return "homepage";
     }
 
     //List all the products
@@ -43,6 +44,7 @@ public class ProductController {
     }
 
     // Add new product functionnality
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/add")
     public String addStudent(Model model){
         model.addAttribute("product", new Product());
@@ -65,6 +67,7 @@ public class ProductController {
 
     // Delete a product functionality, can be called directly from product list
     // there is a delete button next to each product
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable("id") int productId, Model model) {
         productDAO.delete(productId);
