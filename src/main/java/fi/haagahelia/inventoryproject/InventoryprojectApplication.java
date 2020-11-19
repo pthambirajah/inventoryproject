@@ -22,7 +22,8 @@ public class InventoryprojectApplication {
     public CommandLineRunner demo(ProductDAOImpl productDAO, UserRepository userRepository) {
         return (args) -> {
             User user1 = new User("user","$2a$10$HcRhold2nXktBId7hBk2jOBmMbPFWbe9Ns4o.HQafyE8SVufGbjs2","USER");
-            User user2 = new User("admin","$2a$10$nTzAvxjymw8bVPkSzK07uu5/ShtWZfuHXwsC8P46Tyo9jGIMxq8xK","ADMIN");
+            User user2 = new User("admin5","$2a$10$gQT0fLGlAkzJjY8CJmT0De/Wzd5g/PcsZ33ubk3pWzg3Xj.OWsVSS","ADMIN");
+            //Password = Admin
 
             //userRepository.save(user1);
             //userRepository.save(user2);

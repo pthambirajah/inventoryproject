@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 //Main controller to make actions on products
 @Controller
@@ -22,11 +23,23 @@ public class ProductController {
     }
 
     //List all the products
+
     @RequestMapping(value="/productlist")
     public String productList(Model model) {
         List<Product> products = productDAO.findAll();
         model.addAttribute("products", products);
         return "productlist";
+    }
+    //List all the products REST
+    @RequestMapping(value="/products", method = RequestMethod.GET)
+    public @ResponseBody List<Product> productListRest() {
+        return (List<Product>) productDAO.findAll();
+    }
+
+    //Get one product by it's id REST
+    @RequestMapping(value="/product/{id}", method = RequestMethod.GET)
+    public @ResponseBody Optional<Product> findProductRest(@PathVariable("id") int productId) {
+        return Optional.ofNullable(productDAO.findOne(productId));
     }
 
     // Add new product functionnality
